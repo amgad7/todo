@@ -68,50 +68,8 @@ class FirebaseFunction {
     return documentSnapshots.data();
   }
 
-  static void createUserAccount(
-      {required String email,
-      required String password,
-      required String phone,
-      required String userName,
-      required Function onSuccess,
-      required Function onError}) async {
-    try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      UserModel user = UserModel(
-          id: credential.user?.uid ?? "",
-          email: email,
-          userName: userName,
-          phone: phone);
-      await addUser(user);
-      onSuccess();
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        onError(e.message);
-      } else if (e.code == 'email-already-in-use') {
-        onError(e.message);
-      }
-      onError(e.message);
-    } catch (e) {
-      onError("something went wrong");
-    }
-  }
 
-  static login(String email, String password, Function onSuccess,
-      Function onError) async {
-    try {
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
 
-        onSuccess();
-
-    } on FirebaseAuthException catch (e) {
-      onError("wrong email or password");
-    }
-  }
   static void logout(){
     FirebaseAuth.instance.signOut();
   }

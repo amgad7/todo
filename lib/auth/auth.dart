@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo/auth/login.dart';
-import 'package:todo/auth/register.dart';
+import 'package:todo/login/login.dart';
+import 'package:todo/register/register.dart';
 
 class AuthScreen extends StatelessWidget {
   static const String routeName = "auth";
@@ -14,8 +14,9 @@ class AuthScreen extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text("login"),
+          title: Text("login",style: TextStyle(fontSize: 30),),
           bottom: TabBar(
+            indicatorPadding: EdgeInsets.only(bottom: 3,),
             indicatorColor: Colors.white,
 
               tabs: [

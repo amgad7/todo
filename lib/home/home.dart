@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
-          "ToDo ${provider.userModel?.userName}",
+          "ToDo ",
           style: TextStyle(
             fontSize: 30,
             color: Colors.white,
